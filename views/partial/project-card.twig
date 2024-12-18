@@ -1,0 +1,18 @@
+<div class="border border-black p-4" data-terms="{{ project.terms('project-type')|map(term => term.slug)|join(' ') }}">
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="font-micah text-xl">{{ project.title }}</h3>
+        <a href="{{ project.link }}" class="border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors underline">
+            View
+        </a>
+    </div>
+    <div class="flex gap-2">
+        {% for term in project.terms('project-type') %}
+            {% set icon_url = function('get_field', 'icon', term) %}
+            {% if icon_url is not empty %}
+                <div class="flex items-center gap-1">
+                    <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-6 w-6">
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
