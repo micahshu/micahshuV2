@@ -4,13 +4,13 @@
 	<div class="content-wrapper">
 <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
     <section class="article-content">
-        <div class="px-6 py-28 font-micah ">
-            <p class="text-lg">developer • problem solver • creator</p>
-            <p class="text-9xl font-micah">Welcome.</p>
-            <h1 class="text-8xl font-micah">This is my digital <a href="/projects" class="underline ">portfolio</a><span class="text-5xl">.</span></h1>
+        <div class="px-6 py-12 sm:py-28 font-micah ">
+            <p class="text-lg">developer • problem solver • maker</p>
+            <p class="text-8xl sm:text-9xl font-micah">Welcome.</p>
+            <h1 class="text-7xl sm:text-8xl font-micah">This is my digital <a href="/projects" class="underline ">portfolio</a><span class="text-5xl">.</span></h1>
         </div>
         <div class="px-6 py-20 mx-auto border-b  border-t border-black ">
-        <div class="grid grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Left column with logo grid -->
             <div class="grid grid-cols-3 gap-4 ">
                 <div class=" p-4 flex gap-2 items-center justify-left text-center">
@@ -45,52 +45,52 @@
             </div>
 
             <!-- Right column with heading -->
-            <div class="flex items-center">
-                <h2 class="text-4xl font-micah pb-4">Here are my <a href="/go" class="underline">go</a> to tools & technologies.</h2>
+            <div class="flex items-center justify-center">
+                <h2 class="text-4xl  font-micah pt-6 md:pt-0 pb-4">Here are my go to tools & technologies.</h2>
             </div>
         </div>
         </div>
         <div class="p-6 flex flex-col justify-center items-center ">
-            <div class="m-12 font-micah text-center text-4xl">Whatchu know <a href="/about-me" class="underline">about me</a>?</div>
+            <div id="about" class="m-12 font-micah text-center text-4xl">Whatchu know <a href="/about-me" class="underline">about me</a>?</div>
             
-            <div class="flex w-full">
-                <div class="w-1/4 border border-black p-8 flex flex-col justify-start">
+            <div  class="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 w-full">
+                <div class="border border-black p-8 flex flex-col justify-start">
                     <h2 class="text-4xl font-micah mb-4">BACKGROUND</h2>
                     <p>Built on a strong foundation of HTML, CSS, and JavaScript, I embraced React and web application development, paving the way for my full-stack expertise.</p>
                 </div>
                 
-                <div class="w-1/4 border border-black p-8 flex flex-col justify-start border-l-0">
+                <div class="border border-black p-8 flex flex-col justify-start xl:border-l-0">
                     <h2 class="text-4xl font-micah mb-4">PRESENT</h2>
                     <p>My professional work spans the full technical spectrum at marketing agencies. While focusing on WordPress development, I manage everything from hosting and deployment pipelines to system administration, bridging the gap between design and infrastructure.</p>
                 </div>
                 
-                <div class="w-1/4 border border-black p-8 flex flex-col justify-start border-l-0">
+                <div class="border border-black p-8 flex flex-col justify-start xl:border-l-0">
                     <h2 class="text-4xl font-micah mb-4">FUTURE</h2>
                     <p>I'm not just a coder – I'm a technical problem solver dedicated to building better digital solutions. Whatever challenges tomorrow brings, I'm ready to transform them into opportunities.</p>
                 </div>
                 
-                <div class="w-1/4 border border-black p-8 flex flex-col justify-start border-l-0">
+                <div class="border border-black p-8 flex flex-col justify-start xl:border-l-0">
                     <h2 class="text-4xl font-micah mb-4">LEARN MORE</h2>
                     <p>Explore my projects and see how I can help bring your ideas to life.</p>
                     <div class="pt-4 flex gap-1">
                         <a href="/contact" class="underline font-micah text-lg">learn more</a>
-
                     </div>
                 </div>
             </div>
+            </div>
         </div>
 
-<div class="px-6 grid grid-cols-2 mt-12 pb-6">
+<div class="px-6 grid grid-cols-1 lg:grid-cols-2 mt-12 pb-6">
     <!-- Left Column -->
     <div class="flex flex-col justify-center items-center">
         <h2 class="text-4xl font-micah mb-4 text-center">Just show me some <a href="/projects" class="underline">projects</a>.</h2>
-        <p class="text-base font-micah mt-2">I <a href="/go" class="underline">go</a>t you! Check out what I've been up to.</p>
+        <p class="text-base font-micah mt-2 pb-6 lg:pb-0">I got you! Check out what I've been up to.</p>
 
         
     </div>
 
             <!-- Right Column -->
-            <div class="grid grid-cols-2 gap-4 min-h-96">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 min-h-96">
                 {% for project in projects %}
                 {% set project_terms = project.terms('project-type')|map(term => term.slug)|join(' ') %}
                 <div 
@@ -118,16 +118,16 @@
 
             </div>
         </div>
-<div class="p-6" x-data="{ activeService: null }">
-    <h2 class="text-4xl font-micah my-12 text-center">we can talk about my <a href="/services" class="underline">services</a>, if you really wanna</h2>
+<div id="services" class="p-6" x-data="{ activeService: null }">
+    <h2 class="text-4xl font-micah my-12 text-center">we can talk about my <a href="/#services" class="underline">services</a>, if you really wanna</h2>
     
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-1 lg:grid-cols-2">
         <!-- Left Column -->
         <div>
             <div class="pl-6 mt-6 py-6 flex font-bold font-micah text-xl text-left">
                 <p class="flex-1">service</p>
                 <p class="flex-1">time frame</p>
-                <p class="flex-1">estimated cost</p>
+                <p class="flex lg:hidden flex-1"></p>
             </div>
             
             <div @mouseenter="activeService = 'landing'"
@@ -136,7 +136,7 @@
                      :class="{ 'bg-black text-white': activeService === 'landing' }">
                     <p class="flex-1 pl-6">Landing page</p>
                     <p class="flex-1">2 weeks</p>
-                    <p class="flex-1">from $200</p>
+                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>
 
@@ -146,7 +146,7 @@
                      :class="{ 'bg-black text-white': activeService === 'multipage' }">
                     <p class="flex-1">Multipage site</p>
                     <p class="flex-1">30 days</p>
-                    <p class="flex-1">from $600</p>
+                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>
 
@@ -156,7 +156,7 @@
                      :class="{ 'bg-black text-white': activeService === 'onlineshop' }">
                     <p class="flex-1">Online Shop</p>
                     <p class="flex-1">30 days</p>
-                    <p class="flex-1">from $800</p>
+                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>            
 
@@ -166,7 +166,7 @@
                      :class="{ 'bg-black text-white': activeService === 'webapp' }">
                     <p class="flex-1">Web App</p>
                     <p class="flex-1">60 days</p>
-                    <p class="flex-1">from $1000</p>
+                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>  
 
@@ -176,7 +176,7 @@
                      :class="{ 'bg-black text-white': activeService === 'hosting' }">
                     <p class="flex-1">Web Hosting</p>
                     <p class="flex-1">monthly</p>
-                    <p class="flex-1">from $15/month</p>
+                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>  
 
@@ -186,7 +186,7 @@
                      :class="{ 'bg-black text-white': activeService === 'supportmaint' }">
                     <p class="flex-1">support & maintenance</p>
                     <p class="flex-1">hourly</p>
-                    <p class="flex-1">from $25/hour</p>
+                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>  
 
@@ -194,55 +194,218 @@
         </div>
 
         <!-- Right Column -->
-        <div class="border-b border-r border-black">
+        <div class="hidden lg:block border-b border-r border-black">
 
             <div x-show="activeService === 'landing'" 
                 @mouseenter="activeService = 'landing'"
                 @mouseleave="activeService = null"
-                class="h-full bg-black text-white flex items-center justify-center">
-                <h3 class="text-2xl  font-micah mb-4">Landing Page</h3>
-
-            </div>
+                class="h-full bg-black text-white items-center justify-center p-12">
+                <h3 class="text-2xl  font-micah mb-4">Landing Page Design and Development</h3>
+                <p>
+                A well-crafted landing page is the cornerstone of any successful online campaign, 
+                and sometimes it's all you need to establish your digital presence. Whether you're 
+                launching a product, generating leads, or starting with a "starter website," I'll 
+                create a solution tailored to your goals.
+                </p>
+                <br>
+                <p>
+                By blending clean, responsive design with focused user experience principles, 
+                I build landing pages that capture attention, communicate value, and drive action. 
+                Let's turn your vision into a high-performing, user-friendly page that delivers results.
+                </p>
+                <br>
+                <h4 class="text-2xl  font-micah mb-8">Example Landing Page Project</h4>
+                 <div class="border border-white  p-4 h-auto">
+                    <div class="flex justify-between items-center mb-4 ">
+                        <h3 class="font-micah text-xl">React Landing Page</h3>
+                        <a href="/project/react-landing-page/" class="border border-white px-4 py-2 hover:bg-black hover:text-white transition-colors underline">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/nextjs-icon-svgrepo-com.svg" alt="nextjs logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/react-svgrepo-com-1.svg" alt="react logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/tailwind-css-svgrepo-com-1.svg" alt="tailwind" class="h-6 w-6">
+                        </div>
+                    </div>
+                </div>
+      </div>
 
             <div x-show="activeService === 'multipage'" 
                 @mouseenter="activeService = 'multipage'"
                 @mouseleave="activeService = null"                
-                class="h-full bg-black text-white flex items-center justify-center">
-                <h3 class="text-2xl  font-micah mb-4">Multipage</h3>
+                class="h-full bg-black text-white items-center justify-center  p-12">
                 
+                <h3 class="text-2xl  font-micah mb-4">Multipage</h3>
+                <p>
+                A well-crafted landing page is the cornerstone of any successful online campaign, 
+                and sometimes it's all you need to establish your digital presence. Whether you're 
+                launching a product, generating leads, or starting with a "starter website," I'll 
+                create a solution tailored to your goals.
+                </p>
+                <br>
+                <p>
+                By blending clean, responsive design with focused user experience principles, 
+                I build landing pages that capture attention, communicate value, and drive action. 
+                Let's turn your vision into a high-performing, user-friendly page that delivers results.
+                </p>
+                <br>
+                <h4 class="text-2xl  font-micah mb-8">Example multipage Project</h4>
+                 <div class="border border-white  p-4 h-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-micah text-xl">stlpropertypros.com</h3>
+                        <a href="/project/stlpropertypros-com/" class="border border-white px-4 py-2 hover:bg-black hover:text-white transition-colors underline">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/divi-logo-white.svg" alt="divi logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/php-16-svgrepo-com-2.svg" alt="php logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/wordpress-svgrepo-com-1.svg" alt="wordpress" class="h-6 w-6">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div x-show="activeService === 'onlineshop'" 
                 @mouseenter="activeService = 'onlineshop'"
                 @mouseleave="activeService = null"                
-                class="h-full bg-black text-white flex items-center justify-center">
-                <h3 class="text-2xl  font-micah mb-4">onlineshop</h3>
+                class="h-full bg-black text-white items-center justify-center  p-12">
                 
+                <h3 class="text-2xl  font-micah mb-4">Online Shop</h3>
+                <p>
+                A well-crafted landing page is the cornerstone of any successful online campaign, 
+                and sometimes it's all you need to establish your digital presence. Whether you're 
+                launching a product, generating leads, or starting with a "starter website," I'll 
+                create a solution tailored to your goals.
+                </p>
+                <br>
+                <p>
+                By blending clean, responsive design with focused user experience principles, 
+                I build landing pages that capture attention, communicate value, and drive action. 
+                Let's turn your vision into a high-performing, user-friendly page that delivers results.
+                </p>
+                <br>
+                <h4 class="text-2xl  font-micah mb-8">Example ecommmerce Project</h4>
+                 <div class="border border-white  p-4 h-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-micah text-xl">petreefs.com</h3>
+                        <a href="/project/petreefs/" class="border border-white px-4 py-2 hover:bg-black hover:text-white transition-colors underline">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/php-16-svgrepo-com-2.svg" alt="php logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/woocommerce-icon-svgrepo-com-1.svg" alt="woo logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/wordpress-svgrepo-com-1.svg" alt="wordpress" class="h-6 w-6">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div x-show="activeService === 'webapp'" 
                 @mouseenter="activeService = 'webapp'"
                 @mouseleave="activeService = null"                 
-                class="h-full bg-black text-white flex items-center justify-center">
-                <h3 class="text-2xl  font-micah mb-4">webapp</h3>
+                class="h-full bg-black text-white items-center justify-center  p-12">
                 
+                <h3 class="text-2xl  font-micah mb-4">Web App</h3>
+                <p>
+                A well-crafted landing page is the cornerstone of any successful online campaign, 
+                and sometimes it's all you need to establish your digital presence. Whether you're 
+                launching a product, generating leads, or starting with a "starter website," I'll 
+                create a solution tailored to your goals.
+                </p>
+                <br>
+                <p>
+                By blending clean, responsive design with focused user experience principles, 
+                I build landing pages that capture attention, communicate value, and drive action. 
+                Let's turn your vision into a high-performing, user-friendly page that delivers results.
+                </p>
+                <br>
+                <h4 class="text-2xl  font-micah mb-8">Example App Project</h4>
+                 <div class="border border-white  p-4 h-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-micah text-xl">SEO reporting tool</h3>
+                        <a href="/project/petreefs/" class="border border-white px-4 py-2 hover:bg-black hover:text-white transition-colors underline">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/mongodb-svgrepo-com-1.svg" alt="mongodb logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/nextjs-icon-svgrepo-com.svg" alt="nextjs logo" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/react-svgrepo-com-1.svg" alt="react" class="h-6 w-6">
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <img src="/wp-content/uploads/2024/12/tailwind-css-svgrepo-com-1.svg" alt="tailwind" class="h-6 w-6">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div x-show="activeService === 'hosting'" 
                 @mouseenter="activeService = 'hosting'"
                 @mouseleave="activeService = null"                 
-                class="h-full bg-black text-white flex items-center justify-center">
-                <h3 class="text-2xl  font-micah mb-4">hosting</h3>
+                class="h-full bg-black text-white items-center justify-center  p-12">
+                
+                <h3 class="text-2xl  font-micah mb-4">Web Hosting</h3>
+                <p>
+                A well-crafted landing page is the cornerstone of any successful online campaign, 
+                and sometimes it's all you need to establish your digital presence. Whether you're 
+                launching a product, generating leads, or starting with a "starter website," I'll 
+                create a solution tailored to your goals.
+                </p>
+                <br>
+                <p>
+                By blending clean, responsive design with focused user experience principles, 
+                I build landing pages that capture attention, communicate value, and drive action. 
+                Let's turn your vision into a high-performing, user-friendly page that delivers results.
+                </p>
+                <br>
                 
             </div>
 
             <div x-show="activeService === 'supportmaint'" 
                 @mouseenter="activeService = 'supportmaint'"
                 @mouseleave="activeService = null"                 
-                class="h-full bg-black text-white flex items-center justify-center">
-                <h3 class="text-2xl  font-micah mb-4">supportmaint</h3>
+                class="h-full bg-black text-white items-center justify-center  p-12">
+                
+                <h3 class="text-2xl  font-micah mb-4">Web Hosting</h3>
+                <p>
+                A well-crafted landing page is the cornerstone of any successful online campaign, 
+                and sometimes it's all you need to establish your digital presence. Whether you're 
+                launching a product, generating leads, or starting with a "starter website," I'll 
+                create a solution tailored to your goals.
+                </p>
+                <br>
+                <p>
+                By blending clean, responsive design with focused user experience principles, 
+                I build landing pages that capture attention, communicate value, and drive action. 
+                Let's turn your vision into a high-performing, user-friendly page that delivers results.
+                </p>
+                <br>
                 
             </div>
+
 
 
             <!-- Default State -->
@@ -253,15 +416,15 @@
     </div>
 </div>
         
-<div class="grid grid-cols-3 p-6 mt-12 gap-12">
+<div class="grid lg:grid-cols-3 p-6 mt-12 gap-12">
    <!-- Blog Preview -->
    <div>
-    <p class="pb-4 underline"><a href="{{ recent_posts[0].link }}">recent post</a></p>
-    <div class="border border-black p-6">
+    <p class="pb-4 underline"><a href="{{ recent_posts[0].link }}">most recent post</a></p>
+    <div class="border border-black p-6 ">
         <div class="flex justify-between items-center mb-4 text-right">
-            <h3 class=" font-micah text-xl">{{ recent_posts[0].title }}</h3>
+            <h3 class=" font-micah text-xl">{{ recent_posts[0].title|striptags }}</h3>
         </div>
-        <p class="text-base">{{ recent_posts[0].preview.length(20) }}</p>
+        <p class="text-base">{{ recent_posts[0].preview.length(15) }}</p>
         <div class="flex justify-end mt-4">
 
         </div>
@@ -274,9 +437,9 @@
 
    <!-- Text Box -->
    <div>
-   <p class="pb-4 text-right underline"><a href="/blogs"> all blogs</a></p>
-    <div class="border border-black p-6">
-        <h3 class="font-micah text-xl mb-4">A Collection of Thoughts</h3>
+   <p class="pb-4 text-right underline"><a href="/blog">check out all blogs</a></p>
+    <div class="border border-black p-6 ">
+        <h3 class="font-micah text-xl mb-4">Hear ye, hear ye</h3>
         <p class="text-base">I am not much of a writer, but I do have a couple thoughts on some things</p>
         <div class="flex justify-start mt-4">
 

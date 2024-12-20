@@ -1,98 +1,83 @@
 {% extends "base.twig" %}
 
 {% block content %}
-
-    <div class="projects-grid">
-        {% if projects %}
-            {% for project in projects %}
-                <div class="project-card">
-                    <h2>{{ project.title }}</h2>
-                    {% if project.thumbnail %}
-                        <img src="{{ project.thumbnail.src }}" alt="{{ project.title }}">
-                    {% endif %}
-                    <p>{{ project.excerpt }}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No projects found.</p>
+<div class="container mx-auto px-6"> {# Added container for overall centering #}
+    <div class="grid grid-cols-1 mt-12" x-data="{ 
+        activeFilter: null,
+        filterProjects() {
+            const projects = document.querySelectorAll('[data-terms]');
+            projects.forEach(project => {
+                const terms = project.dataset.terms.split(' ');
+                if (!this.activeFilter || terms.includes(this.activeFilter)) {
+                    project.style.display = '';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+    }">
+        <!-- Left Column -->
+        <div class="flex flex-col justify-center items-center">
+            <h2 class="text-4xl font-micah mb-4 text-center">PROJECTS</h2>
+            
+            <!-- Filter Icons -->
+<div class="flex flex-wrap justify-center gap-4 mt-4 px-2"> {# Added flex-wrap and center justification #}
+    {% for term in project_types %}
+        {% set icon_url = function('get_field', 'icon', term) %}
+        {% if icon_url is not empty %}
+            <div 
+                class="cursor-pointer opacity-50 hover:opacity-100 transition-opacity flex flex-col items-center w-16 sm:w-auto" {# Added fixed width on mobile #}
+                data-filter="{{ term.slug }}"
+                @click="
+                    if(activeFilter === '{{ term.slug }}') {
+                        activeFilter = null;
+                    } else {
+                        activeFilter = '{{ term.slug }}';
+                    }
+                    filterProjects();
+                "
+                :class="{ 'opacity-100': activeFilter === '{{ term.slug }}' }"
+            >
+                <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-6 w-6 sm:h-8 sm:w-8 mb-1"> {# Smaller on mobile #}
+                <span class="font-micah text-xs sm:text-sm text-center">{{ term.name }}</span> {# Smaller text on mobile #}
+            </div>
         {% endif %}
-    </div>
-
-
-<div class="px-6 grid grid-cols-2 mt-12" x-data="{ 
-    activeFilter: null,
-    filterProjects() {
-        const projects = document.querySelectorAll('[data-terms]');
-        projects.forEach(project => {
-            const terms = project.dataset.terms.split(' ');
-            if (!this.activeFilter || terms.includes(this.activeFilter)) {
-                project.style.display = '';
-            } else {
-                project.style.display = 'none';
-            }
-        });
-    }
-}">
-    <!-- Left Column -->
-    <div class="flex flex-col justify-center items-center">
-        <h2 class="text-4xl font-micah mb-4 text-center">PROJECTS</h2>
-        
-        <!-- Filter Icons -->
-        <div class="flex gap-4 mt-4">
-            {% for term in project_types %}
-                {% set icon_url = function('get_field', 'icon', term) %}
-                {% if icon_url is not empty %}
-                    <div 
-                        class="cursor-pointer opacity-50 hover:opacity-100 transition-opacity flex flex-col items-center"
-                        data-filter="{{ term.slug }}"
-                        @click="
-                            if(activeFilter === '{{ term.slug }}') {
-                                activeFilter = null;
-                            } else {
-                                activeFilter = '{{ term.slug }}';
-                            }
-                            filterProjects();
-                        "
-                        :class="{ 'opacity-100': activeFilter === '{{ term.slug }}' }"
-                    >
-                        <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-8 w-8 mb-1">
-                        <span class="font-micah text-sm">{{ term.name }}</span>
-                    </div>
-                {% endif %}
-            {% endfor %}
+    {% endfor %}
+</div>
+            <div class="my-8">
+                <p class="text-sm font-micah">see if I got what you're looking for</p>
+            </div>    
         </div>
-        <p class="text-sm font-micah mt-6">see if I <a href="/go" class="underline">go</a>t what you're looking for</p>
-    </div>
 
-            <!-- Right Column -->
-            <div class="grid grid-cols-2 gap-4 min-h-96">
+        <!-- Projects Grid -->
+        <div class="w-[80%] mx-auto"> {# Increased width to 90% of container #}
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6"> {# Increased gap slightly #}
                 {% for project in projects %}
                 {% set project_terms = project.terms('project-type')|map(term => term.slug)|join(' ') %}
                 <div 
                     class="border border-black p-4 h-auto"
                     data-terms="{{ project_terms }}"
                 >
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-micah text-xl">{{ project.title }}</h3>
-                            <a href="{{ project.link }}" class="border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors underline">
-                                View
-                            </a>
-                        </div>
-                        <div class="flex gap-2">
-                            {% for term in project.terms('project-type') %}
-                                {% set icon_url = function('get_field', 'icon', term) %}
-                                {% if icon_url is not empty %}
-                                    <div class="flex items-center gap-1">
-                                        <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-6 w-6">
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-micah text-xl">{{ project.title }}</h3>
+                        <a href="{{ project.link }}" class="border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors underline">
+                            View
+                        </a>
                     </div>
+                    <div class="flex gap-2">
+                        {% for term in project.terms('project-type') %}
+                            {% set icon_url = function('get_field', 'icon', term) %}
+                            {% if icon_url is not empty %}
+                                <div class="flex items-center gap-1">
+                                    <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-6 w-6">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
                 {% endfor %}
-
             </div>
         </div>
-
-
+    </div>
+</div>
 {% endblock %}

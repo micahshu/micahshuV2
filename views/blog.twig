@@ -1,0 +1,61 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header Section -->
+        <div class="max-w-2xl mx-auto text-center mb-12">
+            <h1 class="text-4xl font-micah mb-4">Welcome to My Blog</h1>
+            <p class="text-gray-600">Here I share my thoughts on web development, design, and everything in between.</p>
+        </div>
+
+        <!-- Blog Posts List -->
+        <div class="max-w-3xl mx-auto space-y-8">
+            {% for post in posts %}
+                <article class="border border-black p-6">
+                    <h2 class="text-2xl font-micah mb-2">
+                        {{ post.title }}
+                    </h2>
+                    
+                    <div class="text-sm text-gray-500 mb-4">
+                        {{ post.date }}
+                    </div>
+                    
+                    <div class="text-gray-600 mb-6">
+                        {{ post.preview.length(25).read_more('') }}
+                    </div>
+                    
+                    <a href="{{ post.link }}" class="border border-black px-4 mt-4 py-2 hover:bg-black hover:text-white transition-colors">
+                        Read More
+                    </a>
+                </article>
+            {% else %}
+                <div class="text-center py-8">
+                    <p class="text-gray-500">No posts found</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination if needed -->
+<div class="tool-pagination flex justify-center items-center mt-4 gap-4">
+    {% if posts.pagination.prev %}
+        <a href="{{ posts.pagination.prev.link }}" class="prev {{ posts.pagination.prev.link|length ? '' : 'invisible' }}">Previous</a>
+    {% endif %}
+
+    <ul class="pages flex gap-2">
+        {% for page in posts.pagination.pages %}
+            <li>
+                {% if page.link %}
+                    <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                {% else %}
+                    <span class="{{ page.class }}">{{ page.title }}</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if posts.pagination.next %}
+        <a href="{{ posts.pagination.next.link }}" class="next {{ posts.pagination.next.link|length ? '' : 'invisible' }}">Next</a>
+    {% endif %}
+</div>
+    </div>
+{% endblock %}
