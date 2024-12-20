@@ -6,6 +6,7 @@ module.exports = {
     './src/**/*.php'
   ],
   theme: {
+
     extend: {
       fontFamily: {
         'micah': ['"Funnel Sans"', 'sans-serif'],

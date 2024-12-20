@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <article class="project mt-24">
+        <h1 class="project-title">{{ post.title }}</h1>
+
+        {% if post.thumbnail.src %}
+            <img src="{{ post.thumbnail.src }}" class="project-featured-image" />
+        {% endif %}
+
+        {# Display project type icons #}
+        <div class="flex gap-2">
+            {% for term in post.terms('project-type') %}
+                {% set icon_url = function('get_field', 'icon', term) %}
+                {% if icon_url is not empty %}
+                    <div class="flex items-center gap-1">
+                        <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-6 w-6">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if project_details %}
+            <div class="project-details">
+                {{ project_details }}
+            </div>
+        {% endif %}
+
+        <div class="project-content">
+            {{ post.content }}
+        </div>
+    </article>
+{% endblock %}

@@ -9,10 +9,10 @@
 	<body class="{{body_class}}" data-template="base.twig">
 		{{ function('wp_body_open') }}
 		<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
-<header class="header">
+<header class="header fixed top-0 left-0 right-0 bg-white z-50">
     {% block header %}
     <div class="w-full">
-    <div class="py-4 border-b border-black flex justify-between items-center px-6">
+    <div class="py-4 border-b border-black flex justify-between items-center px-6 ">
         <!-- Logo and crafted with section -->
         <div class="flex gap-2 items-center">
             <a href="/" class="no-underline font-light text-6xl font-micah">micah<span class="font-bold">shu</span></a>
@@ -20,25 +20,33 @@
         </div>
 
         <!-- Navigation Menu -->
-        <nav class="flex items-center gap-8 font-micah text-lg underline">
+        <nav class="hidden lg:flex  items-center gap-8 font-micah text-lg underline ">
             <a href="/" class="hover:text-gray-600 transition-colors">home</a>
-            <a href="/about" class="hover:text-gray-600 transition-colors">about me</a>
+            <a href="/#about" class="hover:text-gray-600 transition-colors">about me</a>
             <a href="/projects" class="hover:text-gray-600 transition-colors">projects</a>
-            <a href="/services" class="hover:text-gray-600 transition-colors">services</a>
+            <a href="/#services" class="hover:text-gray-600 transition-colors">services</a>
             <a href="/blog" class="hover:text-gray-600 transition-colors">blog</a>
         </nav>
 
         <!-- Connect Button -->
-        <div>
+        <div class="hidden sm:flex ">
             <a href="/contact" class="bg-black text-white py-2 px-4 font-micah rounded-full text-lg underline">connect</a>
         </div>
     </div>
+	        <nav class="flex lg:hidden flex-wrap justify-center sm:items-center gap-8 font-micah text-lg underline p-6 ">
+				<a href="/" class="hover:text-gray-600 transition-colors">home</a>
+				<a href="#about" class="hover:text-gray-600 transition-colors">about me</a>
+				<a href="/projects" class="hover:text-gray-600 transition-colors">projects</a>
+				<a href="/#services" class="hover:text-gray-600 transition-colors">services</a>
+				<a href="/blog" class="hover:text-gray-600 transition-colors">blog</a>
+				<a href="/contact" class="hover:text-gray-600 transition-colors sm:hidden">connect</a>
+       		 </nav>
 </div>
     {% endblock %}
 </header>
 
 		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1 class="mt-4">{{title}}</h1>{% endif %}
+			
 			<div class="wrapper">
 				{% block content %}
 					Sorry, no content
