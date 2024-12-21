@@ -4,7 +4,7 @@
 <div class="container mx-auto px-4 py-12">
     <article class="max-w-3xl mx-auto">
         <!-- Back to Blog Button -->
-        <div class="mb-8">
+        <div class="mb-8 mt-16">
             <a href="/blog" class="font-micah text-lg underline hover:text-gray-600 transition-colors">
                 back to blog
             </a>
@@ -25,9 +25,9 @@
             <div class="flex items-center gap-2 font-micah text-lg">
                 {% if post.author %}
                     <span>By</span>
-                    <a href="{{post.author.path}}" class="hover:text-gray-600 transition-colors">
+                    <p>
                         {{ post.author.name }}
-                    </a>
+                    </p>
                     <span>&bull;</span>
                 {% endif %}
                 <time datetime="{{ post.date|date('Y-m-d H:i:s') }}">
@@ -42,8 +42,13 @@
             </div>
         </header>
 
-        <div class="prose max-w-none">
-            {{post.content}}
+        <div class=" max-w-none post-content ">
+            {{ post.content|raw }}
+        </div>
+                <div class="my-8">
+            <a href="/blog" class="font-micah text-lg underline hover:text-gray-600 transition-colors">
+                back to blog
+            </a>
         </div>
     </article>
 </div>

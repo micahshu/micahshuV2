@@ -1,33 +1,76 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <article class="project mt-24">
-        <h1 class="project-title">{{ post.title }}</h1>
-
-        {% if post.thumbnail.src %}
-            <img src="{{ post.thumbnail.src }}" class="project-featured-image" />
-        {% endif %}
-
-        {# Display project type icons #}
-        <div class="flex gap-2">
-            {% for term in post.terms('project-type') %}
-                {% set icon_url = function('get_field', 'icon', term) %}
-                {% if icon_url is not empty %}
-                    <div class="flex items-center gap-1">
-                        <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-6 w-6">
-                    </div>
-                {% endif %}
-            {% endfor %}
+<div class="container mx-auto px-4 pt-48 lg:pt-24 pb-12">
+    <article class="max-w-3xl mx-auto">
+        <!-- Back Button -->
+        <div class="mb-8">
+            <a href="/projects" class="font-micah text-lg underline hover:text-gray-600 transition-colors">
+                back to projects
+            </a>
         </div>
 
-        {% if project_details %}
-            <div class="project-details">
-                {{ project_details }}
+        <!-- Project Header -->
+        <header class="border border-black p-8 mb-8">
+            <h1 class="text-4xl font-micah mb-6">{{ post.title }}</h1>
+            
+            <!-- Technology Icons -->
+            <div class="flex gap-4 mb-6">
+                {% for term in post.terms('project-type') %}
+                    {% set icon_url = function('get_field', 'icon', term) %}
+                    {% if icon_url is not empty %}
+                        <div class="flex items-center gap-1">
+                            <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-8 w-8">
+                            <span class="font-micah text-sm">{{ term.name }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Project Links -->
+            <div class="flex gap-4 font-micah">
+                {% if post.meta('live_demo') %}
+                    <a href="{{ post.meta('live_demo') }}" 
+                       class="border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors underline"
+                       target="_blank">
+                        View Live
+                    </a>
+                {% endif %}
+
+                {% if post.meta('repo_link') %}
+                    <a href="{{ post.meta('repo_link') }}" 
+                       class="border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors underline"
+                       target="_blank">
+                        View Code
+                    </a>
+                {% endif %}
+            </div>
+        </header>
+
+        <!-- Project Featured Image -->
+        {% if post.thumbnail.src %}
+            <div class="mb-8">
+                <img src="{{ post.thumbnail.src }}" 
+                     alt="{{ post.title }}" 
+                     class="w-full h-auto border border-black"
+                />
             </div>
         {% endif %}
 
-        <div class="project-content">
-            {{ post.content }}
-        </div>
+        <!-- Project Details -->
+        {% if project_details %}
+            <div class="border border-black p-8 mb-8">
+                <h2 class="font-micah text-2xl mb-4">Project Details</h2>
+                <div class="prose max-w-none">
+                    {{ project_details }}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Project Content -->
+<div class="post-content">
+    {{ post.content }}
+</div>
     </article>
+</div>
 {% endblock %}

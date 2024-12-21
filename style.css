@@ -35,3 +35,21 @@ html, body {
   .wpcf7-form textarea:focus {
       outline: none;
   }
+  .post-content a {
+    text-decoration:underline;
+  }
+ 
+  .post-content h2{
+    font-size:22px;
+    padding:.5em;
+  }
+.post-content p {
+    padding:.5em;
+    line-height: 1.8em;
+}
+
+.post-content ul {
+    padding-left: 3em;
+    padding-bottom:.5em;
+    list-style-type: disc;
+}

@@ -4,7 +4,7 @@
 	<div class="content-wrapper">
 <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
     <section class="article-content">
-        <div class="px-6 py-12 sm:py-28 font-micah ">
+        <div class="px-6  sm:py-28 font-micah ">
             <p class="text-lg">developer • problem solver • maker</p>
             <p class="text-8xl sm:text-9xl font-micah">Welcome.</p>
             <h1 class="text-7xl sm:text-8xl font-micah">This is my digital <a href="/projects" class="underline ">portfolio</a><span class="text-5xl">.</span></h1>
@@ -45,13 +45,13 @@
             </div>
 
             <!-- Right column with heading -->
-            <div class="flex items-center justify-center">
+            <div id="about" class="flex items-center justify-center">
                 <h2 class="text-4xl  font-micah pt-6 md:pt-0 pb-4">Here are my go to tools & technologies.</h2>
             </div>
         </div>
         </div>
         <div class="p-6 flex flex-col justify-center items-center ">
-            <div id="about" class="m-12 font-micah text-center text-4xl">Whatchu know <a href="/about-me" class="underline">about me</a>?</div>
+            <div id="about" class="m-12 font-micah text-center text-4xl">Whatchu know <span class="underline">about me</span>?</div>
             
             <div  class="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 w-full">
                 <div class="border border-black p-8 flex flex-col justify-start">
@@ -107,7 +107,7 @@
                             {% for term in project.terms('project-type') %}
                                 {% set icon_url = function('get_field', 'icon', term) %}
                                 {% if icon_url is not empty %}
-                                    <div class="flex items-center gap-1">
+                                    <div class="flex items-center gap-1 ">
                                         <img src="{{ icon_url }}" alt="{{ term.name }}" class="h-6 w-6">
                                     </div>
                                 {% endif %}
@@ -136,7 +136,7 @@
                      :class="{ 'bg-black text-white': activeService === 'landing' }">
                     <p class="flex-1 pl-6">Landing page</p>
                     <p class="flex-1">2 weeks</p>
-                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
+                    <a href='/contact' class=" flex lg:hidden   flex-1 underline">learn more</a>
                 </div>
             </div>
 
@@ -146,7 +146,7 @@
                      :class="{ 'bg-black text-white': activeService === 'multipage' }">
                     <p class="flex-1">Multipage site</p>
                     <p class="flex-1">30 days</p>
-                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
+                    <a href='/contact' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>
 
@@ -156,7 +156,7 @@
                      :class="{ 'bg-black text-white': activeService === 'onlineshop' }">
                     <p class="flex-1">Online Shop</p>
                     <p class="flex-1">30 days</p>
-                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
+                    <a href='/contact' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>            
 
@@ -166,7 +166,7 @@
                      :class="{ 'bg-black text-white': activeService === 'webapp' }">
                     <p class="flex-1">Web App</p>
                     <p class="flex-1">60 days</p>
-                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
+                    <a href='/contact' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>  
 
@@ -176,7 +176,7 @@
                      :class="{ 'bg-black text-white': activeService === 'hosting' }">
                     <p class="flex-1">Web Hosting</p>
                     <p class="flex-1">monthly</p>
-                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
+                    <a href='/contact' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>  
 
@@ -186,7 +186,7 @@
                      :class="{ 'bg-black text-white': activeService === 'supportmaint' }">
                     <p class="flex-1">support & maintenance</p>
                     <p class="flex-1">hourly</p>
-                    <a href='/services' class=" flex lg:hidden  flex-1 underline">learn more</a>
+                    <a href='/contact' class=" flex lg:hidden  flex-1 underline">learn more</a>
                 </div>
             </div>  
 
