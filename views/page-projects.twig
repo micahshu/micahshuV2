@@ -1,8 +1,8 @@
 {% extends "base.twig" %}
 
 {% block content %}
-<div class="container mx-auto px-6"> {# Added container for overall centering #}
-    <div class="grid grid-cols-1 mt-12" x-data="{ 
+<div class="container mx-auto px-6 pt-12"> {# Added container for overall centering #}
+    <div class="grid grid-cols-1 mt-48 lg:mt-24" x-data="{ 
         activeFilter: null,
         filterProjects() {
             const projects = document.querySelectorAll('[data-terms]');
@@ -16,12 +16,12 @@
             });
         }
     }">
-        <!-- Left Column -->
+   
         <div class="flex flex-col justify-center items-center">
             <h2 class="text-4xl font-micah mb-4 text-center">PROJECTS</h2>
             
             <!-- Filter Icons -->
-<div class="flex flex-wrap justify-center gap-4 mt-4 px-2"> {# Added flex-wrap and center justification #}
+<div class="flex flex-wrap justify-center gap-5 mt-4 px-2"> {# Added flex-wrap and center justification #}
     {% for term in project_types %}
         {% set icon_url = function('get_field', 'icon', term) %}
         {% if icon_url is not empty %}
@@ -43,9 +43,11 @@
             </div>
         {% endif %}
     {% endfor %}
+
+    
 </div>
-            <div class="my-8">
-                <p class="text-sm font-micah">see if I got what you're looking for</p>
+            <div class="my-4 flex flex-col justify-center items-center">
+                <button class="underline" @click="activeFilter = null; filterProjects();">reset filter</button>
             </div>    
         </div>
 
