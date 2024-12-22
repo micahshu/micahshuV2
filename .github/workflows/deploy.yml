@@ -16,7 +16,7 @@ jobs:
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: sftp://https://micahshu.com
+        server: sftp://164.90.133.111
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./ # Directory in your repository to upload
