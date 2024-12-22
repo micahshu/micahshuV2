@@ -14,10 +14,10 @@ jobs:
       uses: actions/checkout@v3
 
     - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@4.5.0
+      uses: SamKirkland/FTP-Deploy-Action@4.3.5
       with:
-        server: ftp://ftp.yourserver.com
+        server: sftp://https://micahshu.com
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./ # Directory in your repository to upload
-        server-dir: /public_html/ # Directory on the FTP server
+        server-dir: /public_html/wp-content/themes/timber-starter-theme/ # Replace with your remote directory
