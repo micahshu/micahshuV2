@@ -1,4 +1,4 @@
-name: Deploy via SFTP
+name: Deploy to FTP
 
 on:
   push:
@@ -6,24 +6,18 @@ on:
       - main
 
 jobs:
-  deploy:
+  ftp-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: SFTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: sftp
-          port: 22 # Default SFTP port
-          server-dir: /public_html/wp-content/themes/timber-starter-theme/ # Replace with your remote directory
-          # Exclude files/directories you don't want to upload
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            README.md
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.5.0
+      with:
+        server: ftp://ftp.yourserver.com
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./ # Directory in your repository to upload
+        server-dir: /public_html/ # Directory on the FTP server
