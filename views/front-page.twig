@@ -5,7 +5,7 @@
 <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
     <section class="article-content">
         <div class="px-6  sm:py-28 font-micah ">
-            <p class="text-lg">developer • problem solver • maker</p>
+            <p class="text-lg ">developer • problem solver • maker</p>
             <p class="text-8xl sm:text-9xl font-micah">Welcome.</p>
             <h1 class="text-7xl sm:text-8xl font-micah">This is my digital <a href="/projects" class="underline ">portfolio</a><span class="text-5xl">.</span></h1>
         </div>
@@ -424,7 +424,8 @@
         <div class="flex justify-between items-center mb-4 text-right">
             <h3 class=" font-micah text-xl">{{ recent_posts[0].title|striptags }}</h3>
         </div>
-        <p class="text-base">{{ recent_posts[0].preview.length(15) }}</p>
+            <p class="text-base">{{ recent_posts[0].content|excerpt(15) }}</p>
+
         <div class="flex justify-end mt-4">
 
         </div>
