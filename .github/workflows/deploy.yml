@@ -1,23 +1,31 @@
-name: Deploy to FTP
-
+name: Deploy to WordPress
 on:
   push:
     branches:
       - main
-
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
+      
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: sftp://164.90.133.111
+        server: 164.90.133.111
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./ # Directory in your repository to upload
-        server-dir: /public_html/wp-content/themes/timber-starter-theme/ # Replace with your remote directory
+        protocol: ftp # or 'sftp' if your host requires it
+        port: 21 # or 22 for SFTP
+        local-dir: ./
+        server-dir: /public_html/wp-content/themes/timber-starter-theme/
+        log-level: verbose
+        timeout: 60000
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          README.md
+          .env
+          .env.*
