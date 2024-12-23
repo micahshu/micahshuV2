@@ -8,20 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
-    - name: FTP Deploy
+    - name: push to cloudways
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: 164.90.133.111
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        protocol: ftp # or 'sftp' if your host requires it
-        port: 21 # or 22 for SFTP
-        local-dir: ./
+        protocol: sftp
+        port: 22
         server-dir: /public_html/wp-content/themes/timber-starter-theme/
-        log-level: verbose
-        timeout: 60000
         exclude: |
           **/.git*
           **/.git*/**
